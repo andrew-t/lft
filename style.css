@@ -1,0 +1,78 @@
+ @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+body {
+	font-family: Montserrat;
+	font-size: 1.3em;
+}
+
+span[data-tag] {
+	color: #f00;
+}
+span[data-tag]:hover {
+	background: #fdd;
+}
+
+label {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 1em;
+}
+
+form {
+	padding: 1em;
+	background: #ddd;
+}
+input {
+	margin-left: 1em;
+	font-family: inherit;
+	font-size: inherit;
+	width: 6em;
+	border: none;
+	border-radius: 0.25em;
+	box-shadow: 0 0.15em 0.25em inset #0002;
+	padding: 0.5em;
+}
+
+.hover-source {
+	background: #fdd;
+}
+p:hover ~ p .hover-source,
+span:hover ~ .hover-source,
+span:hover ~ * .hover-source {
+	background: transparent;
+}
+
+[data-tag]:focus {
+	outline: 2px solid blue;
+	background: #ddf;
+	color: #00f;
+}
+.focus-source {
+	background: #ddf !important;
+	color: #00f !important;
+}
+p:focus-within ~ p .focus-source,
+span:focus ~ .focus-source,
+span:focus ~ * .focus-source {
+	background: transparent !important;
+	color: #f00 !important;
+}
+
+@media (min-width: 60em) {
+	form {
+		position: absolute;
+		top: 2em;
+		width: 24em;
+	}
+	section {
+		position: absolute;
+		left: 27em;
+		right: 2em;
+	}
+}
+
+.credits {
+	opacity: 0.7;
+	border-top: 1px solid black;
+	padding-top: 1em;
+}

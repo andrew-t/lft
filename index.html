@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>How effective is PCR confirmation</title>
+	<script src="script.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<form>
+		<h1>How effective are PCR confirmation tests?</h1>
+		<p>
+			Enter values you think are reasonable, and the text will update its estimates. The default values are taken from <a href="https://unherd.com/thepost/pcrs-are-not-as-reliable-as-you-might-think/">this article</a>.
+		</p>
+		<label>
+			<span>How many people should be in our experiment?</span>
+			<input type="number" id="population" value="1000000">
+		</label>
+		<label>
+			<span>What percentage of people who take an LFT have covid?</span>
+			<input type="number" id="prevalence" value="1">
+		</label>
+		<label>
+			<span>What percentage of healthy people who take an LFT will get a positive result?</span>
+			<input type="number" id="lftFalsePositive" value="0.1">
+		</label>
+		<label>
+			<span>What percentage of people with covid who take an LFT will get a negative result?</span>
+			<input type="number" id="lftFalseNegative" value="33">
+		</label>
+		<label>
+			<span>What percentage of healthy people who take a PCR test will get a positive result?</span>
+			<input type="number" id="pcrFalsePositive" value="0">
+		</label>
+		<label>
+			<span>What percentage of people with covid who take a PCR test will get a negative result?</span>
+			<input type="number" id="pcrFalseNegative" value="5">
+		</label>
+	</form>
+	<section>
+		<p>
+			Out of <span data-tag="population"></span> people,
+			<span data-tag="infected"></span> (<span data-tag="prevalence"></span>%) have covid.
+		</p>
+		<p>
+			Of the <span data-tag="infected"></span> infected people,
+			<span data-tag="trueLftPositives"></span> test positive
+			and <strong><span data-tag="falseLftNegatives"></span> people with covid tested negative and didn't isolate</strong>.
+		</p>
+		<p>
+			Of the <span data-tag="uninfected"></span> healthy people,
+			<span data-tag="falseLftPositives"></span> test positive
+			and <span data-tag="trueLftNegatives"></span> test negative.
+		</p>
+		<p>
+			That means <span data-tag="totalLftNegatives"></span> people test negative altogether,
+			of whom <span data-tag="falseLftNegatives"></span> (<span data-tag="xLftNpp"></span>%) have covid. <strong>If you get a negative LFT, you have a <span data-tag="xLftNpp"></span>% chance of having covid</strong>, compared to a <span data-tag="prevalence"></span>% chance before you took the test. (And this is assuming you have no other reason to think you might have it&nbsp;&mdash; if you have symptoms then get a PCR.)
+		</p> 
+		<p>
+			The <span data-tag="totalLftNegatives"></span> who tested negative don't get PCR tests so we can forget about them.
+		</p>
+		<p>
+			Meanwhile, of the <span data-tag="totalLftPositives"></span> people who tested positive, <span data-tag="trueLftPositives"></span> (<span data-tag="lftPpp"></span>%) have covid. <strong>If you get a positive LFT, you have a <span data-tag="lftPpp"></span>% chance of having covid.</strong>
+		</p>
+		<p>
+			The <span data-tag="totalLftPositives"></span> people with positive LFTs get PCR tests.
+		</p>
+		<p>
+			Of the <span data-tag="trueLftPositives"></span> infected people,
+			<span data-tag="truePcrPositives"></span> test positive
+			and <span data-tag="falsePcrNegatives"></span> test negative. <strong><span data-tag="falsePcrNegatives"></span> people with covid get a positive LFT test, but don't isolate because they wrongly got a negative PCR confirmation test.</strong>
+		</p>
+		<p>
+			Of the <span data-tag="falseLftPositives"></span> healthy people,
+			<span data-tag="falsePcrPositives"></span> test positive
+			and <span data-tag="truePcrNegatives"></span> test negative.
+		</p>
+		<p>
+			That means <span data-tag="totalPcrPositives"></span> people test positive on both LFT and PCR,
+			of whom <span data-tag="truePcrPositives"></span> (<span data-tag="pcrPpp"></span>%) have covid, while <span data-tag="totalPcrNegatives"></span> test positive on LFT then negative on PCR,
+			of whom <span data-tag="falsePcrNegatives"></span> (<span data-tag="xPcrNpp"></span>%) have covid. <strong>If you get a negative PCR after a positive LFT, you have a <span data-tag="xPcrNpp"></span>% chance of still having covid.</strong>
+		</p>
+		<p class="credits">
+			Thing by <a href="https://www.andrewt.net">Andrew</a>
+		</p>
+	</section>
+</body>
+</html>
